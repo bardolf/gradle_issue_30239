@@ -1,0 +1,33 @@
+plugins {
+    alias libs.plugins.kotlin
+    id('org.jetbrains.kotlin.kapt')
+}
+
+dependencies {
+    implementation(
+            libs.geolatte.geom,
+            libs.geotools.api,
+            libs.geotools.main,
+            libs.geotools.referencing,
+            libs.jakarta.validation,
+            libs.jetbrains.annotations,
+            libs.locationtech.jts,
+    )
+    compileOnly(
+            libs.jackson.databind,
+            libs.jakarta.annotation,
+    )
+    runtimeOnly(
+            libs.logback.classic,
+            libs.geotools.epsg.hsql,
+    )
+    testImplementation(
+            libs.junit.jupiter.api,
+            libs.junit.jupiter.params,
+    )
+
+    testRuntimeOnly(
+            libs.junit.jupiter.engine,
+            project(':test:test-common'),
+    )
+}

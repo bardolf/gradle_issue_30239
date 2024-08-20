@@ -1,0 +1,106 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+import java.text.SimpleDateFormat
+
+plugins {
+    alias libs.plugins.dependency.management apply false
+    alias libs.plugins.kotlin apply false
+    alias libs.plugins.kotlin.serialization apply false
+    alias libs.plugins.nemerosa.versioning
+}
+
+repositories {
+    mavenCentral()
+}
+
+subprojects {
+    group = 'xxx'
+
+    apply plugin: 'idea'
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+    apply plugin: libs.plugins.dependency.management.get().pluginId
+
+    versioning {
+        noWarningOnDirty = true
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+
+    compileJava {
+        options.encoding = "utf-8"
+        options.annotationProcessorPath = configurations.compileClasspath
+    }
+
+    compileTestJava {
+        options.encoding = "utf-8"
+        options.annotationProcessorPath = configurations.compileClasspath
+    }
+
+    idea {
+        module {
+            downloadJavadoc = true
+            downloadSources = true
+        }
+    }
+
+    java {
+        withSourcesJar()
+    }
+
+
+    repositories {
+        // The exclusion is needed for GeoTools to work
+        mavenCentral().content {
+            excludeModule("javax.media", "jai_core")
+        }
+        // Needed for GeoTools, which are not in the Maven Central
+        maven {
+            url = uri("https://repo.osgeo.org/repository/release/")
+        }
+    }
+
+    task allDeps(type: DependencyReportTask) {}
+
+    dependencies {
+        compileOnly(
+                platform(libs.azure.sdk.bom),
+                platform(libs.spring.boot.bom),
+        )
+
+        implementation(
+                platform(libs.azure.sdk.bom),
+                platform(libs.spring.boot.bom),
+        )
+
+        testCompileOnly(
+                platform(libs.azure.sdk.bom),
+                platform(libs.spring.boot.bom),
+        )
+
+        testImplementation(
+                platform(libs.azure.sdk.bom),
+                platform(libs.spring.boot.bom),
+        )
+    }
+}
+
+allprojects {
+    //Support @JvmDefault
+    tasks.withType(KotlinCompile).configureEach {
+        kotlinOptions {
+            freeCompilerArgs = ['-Xjvm-default=all', '-Xlambdas=indy']
+            jvmTarget = '21'
+        }
+    }
+
+    tasks.withType(Test).tap {
+        configureEach {
+            maxHeapSize = '512m'
+            jvmArgs '-Xmx512m', '-XX:MaxMetaspaceSize=256m', '-Xshare:off'
+        }
+    }
+}

@@ -1,0 +1,92 @@
+plugins {
+    alias libs.plugins.kotlin
+    id('org.jetbrains.kotlin.kapt')
+}
+
+dependencies {
+    kapt(
+            libs.mapstruct.processor,
+            libs.persistence.api,
+    )
+
+    compileOnly(
+            libs.geolatte.geom,
+            libs.hypersistence.utils.hibernate,
+            libs.jackson.databind,
+            libs.jackson.kotlin,
+            libs.jakarta.servlet.api,
+            libs.jakarta.validation,
+            libs.persistence.api,
+            libs.spring.data.commons,
+            libs.spring.data.jpa,
+            project(':a'),
+    )
+
+    implementation(
+            libs.apache.poi,
+            libs.apache.poi.ooxml,
+            libs.jackson.annotations,
+            libs.jackson.core,
+            libs.jetbrains.annotations,
+            libs.mapstruct.core,
+            libs.spring.actuator,
+            libs.spring.boot,
+            libs.spring.boot.autoconfigure,
+            libs.spring.context,
+            libs.spring.security.core,
+            libs.spring.web,
+            libs.spring.webmvc,
+            libs.swagger.annotations,
+            project(':c'),
+            project(':cr'),
+            project(':p'),
+            project(':sc'),
+    )
+
+    runtimeOnly(
+            libs.spring.boot.starter.actuator,
+            libs.spring.boot.starter.web,
+            libs.springdoc.webmvc,
+    )
+
+    testImplementation(
+            libs.assertj.core,
+            libs.geolatte.geom,
+            libs.jackson.databind,
+            libs.jackson.datatype.jsr310,
+            libs.jackson.kotlin,
+            libs.jakarta.servlet.api,
+            libs.junit.jupiter.api,
+            libs.mockk,
+            libs.mockk.dsl.jvm,
+            libs.mockk.jvm,
+            libs.persistence.api,
+            libs.spring.beans,
+            libs.spring.boot.test,
+            libs.spring.boot.test.autoconfigure,
+            libs.spring.core,
+            libs.spring.data.commons,
+            libs.spring.data.jpa,
+            libs.spring.security.test,
+            libs.spring.test,
+            libs.testcontainers.junit.jupiter,
+            project(':a'),
+            project(':test:test-common'),
+            project(':test:test-create-structure-dsl'),
+    )
+
+    testCompileOnly(
+            libs.hypersistence.utils.hibernate,
+            libs.testcontainers.junit.jupiter,
+    )
+
+    testRuntimeOnly(libs.spring.boot.starter.test) {
+        exclude group: 'org.mockito', module: 'mockito-core'
+        exclude group: 'org.mockito', module: 'mockito-junit-jupiter'
+    }
+
+    testRuntimeOnly(
+            libs.junit.jupiter.engine
+    )
+}
+

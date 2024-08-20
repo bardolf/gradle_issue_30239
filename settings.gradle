@@ -1,0 +1,15 @@
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
+}
+rootProject.name='makalu'
+
+include 'a'
+include 'b'
+include 'c'
+include 'cr'
+include 'm'
+include 'p'
+include 's'
+include 'sc'
+include 'test:test-common'
+include 'test:test-create-structure-dsl'

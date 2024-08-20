@@ -1,0 +1,68 @@
+plugins {
+    alias libs.plugins.kotlin
+    alias libs.plugins.kotlin.spring
+    id('org.jetbrains.kotlin.kapt')
+}
+
+dependencies {
+    kapt(
+            libs.mapstruct.processor,
+            libs.persistence.api,
+    )
+
+    compileOnly(
+            libs.hypersistence.utils.hibernate,
+            libs.persistence.api,
+            libs.spring.data.commons,
+            libs.spring.data.jpa,
+    )
+
+    implementation(
+            libs.geolatte.geom,
+            libs.jetbrains.annotations,
+            libs.mapstruct.core,
+            libs.spring.beans,
+            libs.spring.context,
+            libs.spring.jdbc,
+            libs.spring.tx,
+            project(':a'),
+            project(':c'),
+            project(':p'),
+    )
+
+    runtimeOnly(
+            libs.hibernate.core,
+            libs.kotlin.reflect,
+            libs.logback.classic,
+            libs.oracle.jdbc11,
+            libs.geotools.epsg.hsql,
+    )
+
+    testCompileOnly(
+            libs.hypersistence.utils.hibernate,
+            libs.persistence.api,
+            libs.testcontainers.junit.jupiter,
+    )
+
+    testImplementation(
+            project(':test:test-common'),
+            project(':test:test-create-structure-dsl'),
+            libs.assertj.core,
+            libs.junit.jupiter.api,
+            libs.slf4j.api,
+            libs.spring.boot,
+            libs.spring.boot.autoconfigure,
+            libs.spring.boot.test,
+            libs.spring.data.commons,
+            libs.spring.data.jpa,
+            libs.spring.test,
+            libs.spring.tx,
+            libs.hibernate.core,
+    )
+
+    testRuntimeOnly(
+            libs.junit.jupiter.engine,
+            libs.oracle.jdbc11,
+            libs.orai18n
+    )
+}

@@ -1,0 +1,163 @@
+[versions]
+apache-poi = '5.3.0'
+assertj-core = '3.26.3'
+avro = '1.12.0'
+azure-sdk-bom = '1.2.26'
+commons-lang = '3.16.0'
+commons-text = '1.12.0'
+commons-validator = '1.9.0'
+cutterslade = '1.10.0'
+dependency-management = '1.1.6'
+geolatte = '1.9.1'
+geotools = '31.3'
+graphviz = '0.18.1'
+hadoop-client = '3.4.0'
+hibernate-jpamodelgen = '6.6.0.Final' # version is defined here due to issue when passing Spring Boot BOM version to kapt.
+hypersistence-utils-hibernate = '3.8.2'
+jakarta-annotation = '3.0.0'
+jakarta-validation = '3.1.0'
+jetbrains-annotations = '24.1.0'
+kotlin = '2.0.10'
+kotlinx = '1.8.1'
+ktlint = '1.3.1'
+ktlint-gradle = '12.1.1'
+liquibase = '4.29.1'
+liquibase-plugin = '2.2.2'
+locationtech-jts = '1.19.0'
+logback = '1.5.7'
+logback-db = '1.2.11.1'
+mapstruct = '1.6.0'
+mockk = '1.13.12'
+nemerosa-versioning = '3.1.0'
+opencsv = '5.9'
+oracle-jdbc11 = '23.5.0.24.07'
+oshi-core = '6.6.3'
+parquet = '1.14.1'
+persistance-api = '3.1.0'
+picocli = '4.7.6'
+postgresql = '42.7.3'
+querydsl = '5.1.0'
+slf4j = '2.0.14'
+snakeyaml = '2.2'
+spring-boot-bom = '3.3.2'
+springdoc = '2.6.0'
+spring-doc-gradle = '1.9.0'
+swagger-annotations = '2.2.22'
+
+[libraries]
+apache-poi = { module = 'org.apache.poi:poi', version.ref = 'apache-poi' }
+apache-poi-ooxml = { module = 'org.apache.poi:poi-ooxml', version.ref = 'apache-poi' }
+aspectjrt = { module = 'org.aspectj:aspectjrt' }
+assertj-core = { module = 'org.assertj:assertj-core', version.ref = 'assertj-core' }
+avro = { module = "org.apache.avro:avro", version.ref = 'avro' }
+azure-sdk-bom = { module = 'com.azure:azure-sdk-bom', version.ref = 'azure-sdk-bom' }
+azure-blob = { module = 'com.azure:azure-storage-blob' }
+azure-core = { module = 'com.azure:azure-core' }
+azure-identity = { module = 'com.azure:azure-identity' }
+commons-lang = { module = 'org.apache.commons:commons-lang3', version.ref = 'commons-lang' }
+commons-text = { module = 'org.apache.commons:commons-text', version.ref = 'commons-text' }
+commons-validator = { module = 'commons-validator:commons-validator', version.ref = 'commons-validator' }
+freemarker = { module = 'org.freemarker:freemarker' }
+geolatte-geom = { module = 'org.geolatte:geolatte-geom', version.ref = 'geolatte' }
+geotools-api = { module = 'org.geotools:gt-api', version.ref = 'geotools' }
+geotools-epsg-hsql = { module = 'org.geotools:gt-epsg-hsql', version.ref = 'geotools' }
+geotools-main = { module = 'org.geotools:gt-main', version.ref = 'geotools' }
+geotools-referencing = { module = 'org.geotools:gt-referencing', version.ref = 'geotools' }
+graphviz = { module = 'guru.nidi:graphviz-java', version.ref = 'graphviz' }
+hadoop-client = { module = 'org.apache.hadoop:hadoop-client', version.ref = 'hadoop-client' }
+hibernate-core = { module = 'org.hibernate.orm:hibernate-core' }
+hibernate-jpamodelgen = { module = 'org.hibernate.orm:hibernate-jpamodelgen', version.ref = 'hibernate-jpamodelgen' }
+hibernate-spatial = { module = 'org.hibernate.orm:hibernate-spatial' }
+hikariCP = { module = 'com.zaxxer:HikariCP' }
+hypersistence-utils-hibernate = { module = 'io.hypersistence:hypersistence-utils-hibernate-63', version.ref = 'hypersistence-utils-hibernate' }
+jackson-annotations = { module = 'com.fasterxml.jackson.core:jackson-annotations' }
+jackson-core = { module = 'com.fasterxml.jackson.core:jackson-core' }
+jackson-databind = { module = 'com.fasterxml.jackson.core:jackson-databind' }
+jackson-dataformat-yaml = { module = 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml' }
+jackson-datatype-jsr310 = { module = 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310' }
+jackson-kotlin = { module = 'com.fasterxml.jackson.module:jackson-module-kotlin' }
+jakarta-annotation = { module = 'jakarta.annotation:jakarta.annotation-api', version.ref = 'jakarta-annotation' }
+jakarta-servlet-api = { module = 'jakarta.servlet:jakarta.servlet-api' }
+jakarta-validation = { module = 'jakarta.validation:jakarta.validation-api', version.ref = 'jakarta-validation' }
+jetbrains-annotations = { module = 'org.jetbrains:annotations', version.ref = 'jetbrains-annotations' }
+junit-jupiter-api = { module = 'org.junit.jupiter:junit-jupiter-api' }  # use the version from the spring-boot-bom instead
+junit-jupiter-engine = { module = 'org.junit.jupiter:junit-jupiter-engine' }
+junit-jupiter-params = { module = 'org.junit.jupiter:junit-jupiter-params' }
+junit-platform-suite-api = { module = 'org.junit.platform:junit-platform-suite-api' }
+junit-platform-suite = { module = 'org.junit.platform:junit-platform-suite' }
+kotlin-reflect = { module = 'org.jetbrains.kotlin:kotlin-reflect', version.ref = 'kotlin' }
+kotlinx-coroutines-core = { module = 'org.jetbrains.kotlinx:kotlinx-coroutines-core', version.ref = 'kotlinx' }
+kotlinx-coroutines-core-jvm = { module = 'org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm', version.ref = 'kotlinx' }
+ktlint-core = { module = 'com.pinterest.ktlint:ktlint-rule-engine-core', version.ref = 'ktlint' } # This is unused, but we keep it here to ensure the version is managed by Renovate
+liquibase-core = { module = 'org.liquibase:liquibase-core', version.ref = 'liquibase' }
+locationtech-jts = { module = 'org.locationtech.jts:jts-core', version.ref = 'locationtech-jts' }
+logback-classic = { module = 'ch.qos.logback:logback-classic', version.ref = 'logback' }
+logback-classic-db = { module = 'ch.qos.logback.db:logback-classic-db', version.ref = 'logback-db' }
+logback-core = { module = 'ch.qos.logback:logback-core', version.ref = 'logback' }
+mapstruct-core = { module = 'org.mapstruct:mapstruct', version.ref = 'mapstruct' }
+mapstruct-processor = { module = 'org.mapstruct:mapstruct-processor', version.ref = 'mapstruct' }
+mockk = { module = 'io.mockk:mockk', version.ref = 'mockk' }
+mockk-dsl-jvm = { module = 'io.mockk:mockk-dsl-jvm', version.ref = 'mockk' }
+mockk-jvm = { module = 'io.mockk:mockk-jvm', version.ref = 'mockk' }
+opencsv = { module = 'com.opencsv:opencsv', version.ref = 'opencsv' }
+oracle-jdbc11 = { module = 'com.oracle.database.jdbc:ojdbc11', version.ref = 'oracle-jdbc11' }
+orai18n = { module = 'com.oracle.database.nls:orai18n', version.ref = 'oracle-jdbc11' }
+oshi-core = { module = 'com.github.oshi:oshi-core', version.ref = 'oshi-core' }
+parquet-avro = { module = 'org.apache.parquet:parquet-avro', version.ref = 'parquet' }
+parquet-common = { module = 'org.apache.parquet:parquet-common', version.ref = 'parquet' }
+parquet-hadoop = { module = 'org.apache.parquet:parquet-hadoop', version.ref = 'parquet' }
+persistence-api = { module = 'jakarta.persistence:jakarta.persistence-api', version.ref = 'persistance-api' }
+picocli = { module = 'info.picocli:picocli', version.ref = 'picocli' }
+postgresql = { module = 'org.postgresql:postgresql', version.ref = 'postgresql' }
+querydsl-jpa = { module = 'com.querydsl:querydsl-jpa', version.ref = 'querydsl' }
+slf4j-api = { module = 'org.slf4j:slf4j-api', version.ref = 'slf4j' }
+snakeyaml = { module = 'org.yaml:snakeyaml', version.ref = 'snakeyaml' }
+spring-actuator = { module = 'org.springframework.boot:spring-boot-actuator' }
+spring-aspects = { module = 'org.springframework:spring-aspects' }
+spring-batch-infrastructure = { module = 'org.springframework.batch:spring-batch-infrastructure' }
+spring-beans = { module = 'org.springframework:spring-beans' }
+spring-boot = { module = 'org.springframework.boot:spring-boot' }
+spring-boot-autoconfigure = { module = 'org.springframework.boot:spring-boot-autoconfigure' }
+spring-boot-bom = { module = 'org.springframework.boot:spring-boot-dependencies', version.ref = 'spring-boot-bom' }
+spring-boot-starter-actuator = { module = 'org.springframework.boot:spring-boot-starter-actuator' }
+spring-boot-starter-data-jpa = { module = 'org.springframework.boot:spring-boot-starter-data-jpa' }
+spring-boot-starter-test = { module = 'org.springframework.boot:spring-boot-starter-test' }
+spring-boot-starter-validation = { module = 'org.springframework.boot:spring-boot-starter-validation' }
+spring-boot-starter-web = { module = 'org.springframework.boot:spring-boot-starter-web' }
+spring-boot-test = { module = 'org.springframework.boot:spring-boot-test' }
+spring-boot-test-autoconfigure = { module = 'org.springframework.boot:spring-boot-test-autoconfigure' }
+spring-context = { module = 'org.springframework:spring-context' }
+spring-core = { module = 'org.springframework:spring-core' }
+spring-data-commons = { module = 'org.springframework.data:spring-data-commons' }
+spring-data-jpa = { module = 'org.springframework.data:spring-data-jpa' }
+spring-jdbc = { module = 'org.springframework:spring-jdbc' }
+spring-security-config = { module = 'org.springframework.security:spring-security-config' }
+spring-security-core = { module = 'org.springframework.security:spring-security-core' }
+spring-security-oauth2-core = { module = 'org.springframework.security:spring-security-oauth2-core' }
+spring-security-oauth2-jose = { module = 'org.springframework.security:spring-security-oauth2-jose' }
+spring-security-oauth2-resource-server = { module = 'org.springframework.security:spring-security-oauth2-resource-server' }
+spring-security-test = { module = 'org.springframework.security:spring-security-test' }
+spring-security-web = { module = 'org.springframework.security:spring-security-web' }
+spring-test = { module = 'org.springframework:spring-test' }
+spring-tx = { module = 'org.springframework:spring-tx' }
+spring-web = { module = 'org.springframework:spring-web' }
+spring-webmvc = { module = 'org.springframework:spring-webmvc' }
+springdoc-webmvc = { module = 'org.springdoc:springdoc-openapi-starter-webmvc-ui', version.ref = 'springdoc' }
+swagger-annotations = { module = 'io.swagger.core.v3:swagger-annotations', version.ref = 'swagger-annotations' }
+testcontainers = { module = 'org.testcontainers:testcontainers' }
+testcontainers-jdbc = { module = 'org.testcontainers:jdbc' }
+testcontainers-junit-jupiter = { module = 'org.testcontainers:junit-jupiter' }
+testcontainers-postgresql = { module = 'org.testcontainers:postgresql' }
+
+[plugins]
+cutterslade = { id = 'ca.cutterslade.analyze', version.ref = 'cutterslade' }
+dependency-management = { id = 'io.spring.dependency-management', version.ref = 'dependency-management' }
+kotlin = { id = 'org.jetbrains.kotlin.jvm', version.ref = 'kotlin' }
+kotlin-jpa = { id = 'org.jetbrains.kotlin.plugin.jpa', version.ref = 'kotlin' }
+kotlin-serialization = { id = 'org.jetbrains.kotlin.plugin.serialization', version.ref = 'kotlin' }
+kotlin-spring = { id = 'org.jetbrains.kotlin.plugin.spring', version.ref = 'kotlin' }
+ktlint-gradle = { id = 'org.jlleitschuh.gradle.ktlint', version.ref = 'ktlint-gradle' }
+liquibase = { id = 'org.liquibase.gradle', version.ref = 'liquibase-plugin' }
+nemerosa-versioning = { id = 'net.nemerosa.versioning', version.ref = 'nemerosa-versioning' }
+spring-boot = { id = 'org.springframework.boot', version.ref = 'spring-boot-bom' }
+spring-doc-gradle = { id = 'org.springdoc.openapi-gradle-plugin', version.ref = 'spring-doc-gradle' }

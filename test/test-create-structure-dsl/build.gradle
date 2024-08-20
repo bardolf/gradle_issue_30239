@@ -1,0 +1,45 @@
+plugins {
+    alias libs.plugins.kotlin
+    alias libs.plugins.kotlin.spring
+    id('org.jetbrains.kotlin.kapt')
+}
+
+dependencies {
+    implementation(
+            project(':c'),
+            project(':p'),
+            libs.commons.lang,
+            libs.geolatte.geom,
+            libs.jetbrains.annotations,
+            libs.spring.context,
+            libs.spring.tx,
+    )
+
+    compileOnly(
+            libs.hypersistence.utils.hibernate,
+            libs.spring.data.jpa,
+    )
+
+    testImplementation(
+            libs.assertj.core,
+            libs.hibernate.core,
+            libs.junit.jupiter.api,
+            libs.mockk,
+            libs.mockk.dsl.jvm,
+            libs.mockk.jvm,
+            libs.persistence.api,
+            libs.spring.boot.autoconfigure,
+            libs.spring.boot.test,
+            libs.spring.test,
+            project(':test:test-common'),
+    )
+
+    testCompileOnly(
+            libs.hypersistence.utils.hibernate,
+            libs.spring.data.jpa,
+    )
+
+    testRuntimeOnly(
+            libs.junit.jupiter.engine,
+    )
+}

@@ -1,0 +1,59 @@
+plugins {
+    alias libs.plugins.kotlin
+    id('org.jetbrains.kotlin.kapt')
+}
+
+dependencies {
+    kapt(
+            libs.mapstruct.processor,
+            libs.persistence.api,
+    )
+
+    compileOnly(
+            libs.hypersistence.utils.hibernate,
+            libs.persistence.api,
+            libs.spring.data.jpa,
+    )
+    implementation(
+            libs.avro,
+            libs.azure.blob,
+            libs.azure.core,
+            libs.azure.identity,
+            libs.jetbrains.annotations,
+            libs.kotlin.reflect,
+            libs.mapstruct.core,
+            libs.opencsv,
+            libs.parquet.avro,
+            libs.parquet.common,
+            libs.parquet.hadoop,
+            libs.spring.boot,
+            libs.spring.boot.autoconfigure,
+            libs.spring.context,
+            project(':c'),
+            project(':p'),
+    )
+
+    runtimeOnly(
+            libs.hadoop.client,
+    )
+
+    testImplementation(
+            libs.junit.jupiter.api,
+            libs.mockk,
+            libs.mockk.dsl.jvm,
+            libs.mockk.jvm,
+            project(':test:test-create-structure-dsl'),
+    )
+
+    testCompileOnly(
+            libs.hypersistence.utils.hibernate,
+            libs.persistence.api,
+            libs.spring.data.jpa,
+    )
+
+    testRuntimeOnly(
+            libs.junit.jupiter.engine,
+            libs.spring.boot.starter.test,
+            project(':test:test-common'),
+    )
+}

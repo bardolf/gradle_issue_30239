@@ -1,0 +1,85 @@
+plugins {
+    alias libs.plugins.kotlin
+    alias libs.plugins.kotlin.spring
+    id('org.jetbrains.kotlin.kapt')
+}
+
+dependencies {
+    kapt(
+            libs.mapstruct.processor,
+            libs.persistence.api,
+    )
+
+    compileOnly(
+            libs.hypersistence.utils.hibernate,
+            libs.persistence.api,
+            libs.spring.data.commons,
+            libs.spring.data.jpa,
+    )
+
+    implementation(
+            project(':c'),
+            project(':cr'),
+            project(':p'),
+            project(':sc'),
+            libs.slf4j.api,
+            libs.aspectjrt,
+            libs.freemarker,
+            libs.geolatte.geom,
+            libs.jetbrains.annotations,
+            libs.kotlinx.coroutines.core,
+            libs.kotlinx.coroutines.core.jvm,
+            libs.logback.classic,
+            libs.logback.core,
+            libs.spring.batch.infrastructure,
+            libs.spring.beans,
+            libs.spring.boot.autoconfigure,
+            libs.spring.context,
+            libs.spring.jdbc,
+            libs.spring.security.core,
+            libs.spring.tx,
+    )
+
+    runtimeOnly(
+            libs.hibernate.core,
+            libs.kotlin.reflect,
+            libs.oracle.jdbc11,
+            libs.geotools.epsg.hsql,
+    )
+
+    testCompileOnly(
+            libs.hypersistence.utils.hibernate,
+            libs.persistence.api,
+            libs.testcontainers.junit.jupiter,
+    )
+
+    testImplementation(
+            project(':test:test-common'),
+            project(':test:test-create-structure-dsl'),
+            libs.assertj.core,
+            libs.commons.text,
+            libs.graphviz,
+            libs.junit.jupiter.api,
+            libs.junit.jupiter.params,
+            libs.junit.platform.suite.api,
+            libs.mockk,
+            libs.mockk.dsl.jvm,
+            libs.mockk.jvm,
+            libs.slf4j.api,
+            libs.spring.boot,
+            libs.spring.boot.autoconfigure,
+            libs.spring.boot.test,
+            libs.spring.data.commons,
+            libs.spring.data.jpa,
+            libs.spring.test,
+    )
+
+    testRuntimeOnly(
+            libs.junit.jupiter.engine,
+            libs.junit.platform.suite,
+            libs.oracle.jdbc11,
+            libs.orai18n,
+            libs.spring.test,
+            libs.logback.classic.db,
+    )
+}

@@ -1,0 +1,22 @@
+plugins {
+    alias libs.plugins.kotlin
+}
+
+dependencies {
+    implementation(
+            libs.jackson.annotations,
+            libs.jakarta.validation,
+            libs.jetbrains.annotations,
+            libs.spring.context,
+            libs.spring.web,
+            libs.swagger.annotations,
+    )
+
+    compileOnly(
+            libs.jackson.databind,
+            libs.jakarta.annotation,
+    )
+    runtimeOnly(
+            libs.geotools.epsg.hsql
+    )
+}

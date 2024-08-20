@@ -1,0 +1,93 @@
+plugins {
+    alias libs.plugins.liquibase
+    alias libs.plugins.kotlin
+    alias libs.plugins.kotlin.jpa
+    alias libs.plugins.kotlin.spring
+    id('org.jetbrains.kotlin.kapt')
+    id('application')
+}
+
+dependencies {
+    kapt(
+            libs.hibernate.jpamodelgen,
+            libs.hypersistence.utils.hibernate,
+    )
+
+    compileOnly(
+            libs.hibernate.jpamodelgen,
+            libs.spring.aspects,
+    )
+
+    implementation(
+            project(':a'),
+            project(':c'),
+            project(':sc'),
+            libs.commons.validator,
+            libs.geolatte.geom,
+            libs.hikariCP,
+            libs.jakarta.validation,
+            libs.jetbrains.annotations,
+            libs.persistence.api,
+            libs.postgresql,
+            libs.slf4j.api,
+            libs.spring.beans,
+            libs.spring.boot,
+            libs.spring.boot.autoconfigure,
+            libs.spring.context,
+            libs.spring.data.commons,
+            libs.spring.data.jpa,
+            libs.spring.jdbc,
+            libs.spring.tx,
+            // keep this dependency at very last place
+            libs.hypersistence.utils.hibernate,
+    )
+
+    runtimeOnly(
+            libs.hibernate.core,
+            libs.hibernate.spatial,
+            libs.kotlin.reflect,
+            libs.liquibase.core,
+            libs.picocli,
+            libs.postgresql,
+            libs.snakeyaml,
+            libs.spring.aspects,
+            libs.spring.boot.starter.data.jpa,
+            libs.spring.boot.starter.validation,
+    )
+
+    testImplementation(
+            project(':a'),
+            project(':test:test-common'),
+            libs.assertj.core,
+            libs.junit.jupiter.api,
+            libs.slf4j.api,
+            libs.spring.boot,
+            libs.spring.boot.autoconfigure,
+            libs.spring.boot.test,
+            libs.spring.test,
+            libs.testcontainers.junit.jupiter,
+    )
+
+    testCompileOnly(
+            libs.testcontainers.junit.jupiter,
+    )
+
+    testRuntimeOnly(
+            libs.junit.jupiter.engine,
+            libs.logback.classic,
+            variantOf(libs.querydsl.jpa) { classifier("jakarta") },
+    )
+
+    liquibaseRuntime(
+            libs.liquibase.core,
+            libs.picocli,
+            libs.postgresql,
+            libs.snakeyaml,
+    )
+}
+
+allOpen {
+    annotation("jakarta.persistence.Entity")
+    annotation("jakarta.persistence.MappedSuperclass")
+    annotation("jakarta.persistence.Embeddable")
+}

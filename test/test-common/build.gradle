@@ -1,0 +1,25 @@
+plugins {
+    alias libs.plugins.kotlin
+    alias libs.plugins.kotlin.spring
+    id('org.jetbrains.kotlin.kapt')
+}
+
+dependencies {
+    implementation(
+            libs.jakarta.annotation,
+            libs.jetbrains.annotations,
+            libs.junit.jupiter.api,
+            libs.liquibase.core,
+            libs.logback.classic,
+            libs.oshi.core,
+            libs.slf4j.api,
+            libs.spring.boot,
+            libs.spring.boot.test,
+            libs.spring.context,
+            libs.spring.test,
+            libs.testcontainers,
+            libs.testcontainers.jdbc,
+            libs.testcontainers.junit.jupiter,
+            libs.testcontainers.postgresql,
+    )
+}

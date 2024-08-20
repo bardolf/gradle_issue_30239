@@ -1,0 +1,27 @@
+plugins {
+    alias libs.plugins.kotlin
+    alias libs.plugins.kotlin.spring
+    id('org.jetbrains.kotlin.kapt')
+}
+
+dependencies {
+
+    implementation(
+            libs.jakarta.servlet.api,
+            libs.jetbrains.annotations,
+            libs.spring.boot.autoconfigure,
+            libs.spring.context,
+            libs.spring.core,
+            libs.spring.security.config,
+            libs.spring.security.core,
+            libs.spring.security.oauth2.core,
+            libs.spring.security.oauth2.jose,
+            libs.spring.security.oauth2.resource.server,
+            libs.spring.security.web
+    )
+
+    runtimeOnly(
+            libs.jakarta.servlet.api,
+            libs.spring.boot.autoconfigure,
+    )
+}
